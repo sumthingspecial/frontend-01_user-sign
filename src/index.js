@@ -3,10 +3,10 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import "./index.css";
 import App from "layouts/App";
+import SignIn from "layouts/SignIn";
 import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "redux/store";
-import SignIn from "layouts/SignIn";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
