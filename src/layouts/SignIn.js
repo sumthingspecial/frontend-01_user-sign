@@ -13,6 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 function SignIn() {
   const [isPasswordShown, setIsPasswordShown] = useState(false);
@@ -82,12 +83,19 @@ function SignIn() {
                 item
                 container
                 justifyContent="center"
-                paddingY={1}
                 paddingX={2}
               >
                 <Button variant="contained" type="submit" fullWidth>
                   로그인
                 </Button>
+              </Grid>
+              <Grid item container justifyContent="space-between" paddingX={2} paddingTop={0.5}>
+                <Link to="/sign-up">
+                  <Button type="button">회원가입</Button>
+                </Link>
+                <Link to="/find-paasword">
+                  <Button type="button">비밀번호 찾기</Button>
+                </Link>
               </Grid>
             </Grid>
           </form>
