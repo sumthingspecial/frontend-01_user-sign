@@ -8,6 +8,7 @@ import reportWebVitals from "./reportWebVitals";
 import { Provider } from "react-redux";
 import store from "redux/store";
 import SignUp from "layouts/SignUp";
+import FindPassword from "layouts/FindPassword";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
@@ -18,6 +19,7 @@ root.render(
         <Route path="/*" element={<App />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
+        <Route path="/find-password" element={<FindPassword />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

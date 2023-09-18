@@ -93,7 +93,7 @@ function SignIn() {
                 <Link to="/sign-up">
                   <Button type="button">회원가입</Button>
                 </Link>
-                <Link to="/find-paasword">
+                <Link to="/find-password">
                   <Button type="button">비밀번호 찾기</Button>
                 </Link>
               </Grid>
