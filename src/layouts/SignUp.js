@@ -4,14 +4,40 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function SignUp() {
+  const [email, setEmail] = useState("");
+  const [isEmailChecked, setIsEmailChecked] = useState(false);
+  const [password, setPassword] = useState("");
   const [isPasswordShown, setIsPasswordShown] = useState(false);
+  const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [name, setName] = useState("");
+  const [phone, setPhone] = useState("");
+
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  }
+
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  }
 
   const togglePasswordShow = () => {
     setIsPasswordShown(!isPasswordShown);
   };
 
+  const passwordConfirmHandler = (e) => {
+    setPasswordConfirm(e.target.value);
+  };
+
+  const nameHandler = (e) => {
+    setName(e.target.value);
+  }
+
+  const phoneHandler = (e) => {
+    setPhone(e.target.value);
+  }
 
   const signUpHandler = (e) => {
+    e.preventDefault();
     console.log(e)
   }
 
@@ -26,38 +52,36 @@ function SignUp() {
       >
         <Card>
           <form onSubmit={signUpHandler}>
-            <Grid container padding={3} flexDirection="column">
+            <Grid container padding={5} flexDirection="column">
               <Grid
                 item
-                container
-                justifyContent="center"
-                marginBottom={2}
-                padding={2}
+                marginBottom={4}
               >
-                <Typography variant="h2">MEMBER</Typography>
+                <Typography variant="h3">BE<br />OUR<br />MEMBER</Typography>
               </Grid>
-              <Grid item container marginBottom={1.5} paddingX={2} columnSpacing={2} alignItems="flex-end">
+              <Grid item container marginBottom={5} flexDirection="column" rowSpacing={1.5}>
+                <Grid item container columnSpacing={2} alignItems="flex-end">
+                  <Grid item>                  
+                    <FormControl variant="standard" required>
+                      <InputLabel htmlFor="sign-up-email">Email</InputLabel>
+                      <Input
+                        id="sign-up-email"
+                        fullWidth
+                        label="Email"
+                        placeholder="이메일"
+                        onChange={emailHandler}
+                      />
+                    </FormControl>
+                  </Grid>
+                  <Grid item>
+                    <Button type="button" variant="contained">메일 확인</Button>
+                  </Grid>
+                </Grid>
                 <Grid item>                  
-                  <FormControl variant="standard" required>
-                    <InputLabel htmlFor="sign-in-email">Email</InputLabel>
-                    <Input
-                      id="sign-in-email"
-                      fullWidth
-                      label="Email"
-                      placeholder="이메일"
-                    />
-                  </FormControl>
-                </Grid>
-                <Grid item>
-                  <Button type="button" variant="contained">메일 확인</Button>
-                </Grid>
-              </Grid>
-              <Grid item marginBottom={5} paddingX={2}>
-                <Grid sx={{ mb: 1.5 }}>                  
                   <FormControl variant="standard" required fullWidth>
-                    <InputLabel htmlFor="sign-in-password">Password</InputLabel>
+                    <InputLabel htmlFor="sign-up-password">Password</InputLabel>
                     <Input
-                      id="sign-in-password"
+                      id="sign-up-password"
                       fullWidth
                       label="Password"
                       placeholder="비밀번호"
@@ -72,22 +96,24 @@ function SignUp() {
                           </IconButton>
                         </InputAdornment>
                       }
+                      onChange={passwordHandler}
                     />
                   </FormControl>
                 </Grid>
-                <Grid sx={{mb: 1.5}}>
+                <Grid item>
                   <FormControl variant="standard" required fullWidth>                  
-                    <InputLabel htmlFor="sign-in-password-confirm">Password Confirm</InputLabel>
+                    <InputLabel htmlFor="sign-up-password-confirm">Password Confirm</InputLabel>
                     <Input
-                      id="sign-in-password-confirm"
+                      id="sign-up-password-confirm"
                       fullWidth
                       label="Password Confirm"
                       placeholder="비밀번호 확인"
                       type="password"
+                      onChange={passwordConfirmHandler}
                     />
                   </FormControl>
                 </Grid>
-                <Grid sx={{mb: 1.5}}>
+                <Grid item>
                   <FormControl variant="standard" required fullWidth>                  
                     <InputLabel htmlFor="sign-up-name">Name</InputLabel>
                     <Input
@@ -95,17 +121,19 @@ function SignUp() {
                       fullWidth
                       label="Name"
                       placeholder="이름"
+                      onChange={nameHandler}
                     />
                   </FormControl>
                 </Grid>
-                <Grid>
+                <Grid item>
                   <FormControl variant="standard" required fullWidth>                  
-                    <InputLabel htmlFor="sign-up-name">Phone</InputLabel>
+                    <InputLabel htmlFor="sign-up-phone">Phone</InputLabel>
                     <Input
-                      id="sign-up-name"
+                      id="sign-up-phone"
                       fullWidth
                       label="Phone"
                       placeholder="전화번호"
+                      onChange={phoneHandler}
                     />
                   </FormControl>
                 </Grid>

@@ -4,7 +4,6 @@ import {
   Button,
   Card,
   Container,
-  FormGroup,
   Grid,
   IconButton,
   Input,
@@ -16,13 +15,24 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 function SignIn() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [isPasswordShown, setIsPasswordShown] = useState(false);
+
+  const emailHandler = (e) => {
+    setEmail(e.target.value);
+  }
+
+  const passwordHandler = (e) => {
+    setPassword(e.target.value);
+  }
 
   const togglePasswordShow = () => {
     setIsPasswordShown(!isPasswordShown);
   };
 
   const signInHandler = (e) => {
+    e.preventDefault();
     console.log(e)
   }
 
@@ -44,20 +54,21 @@ function SignIn() {
                 marginBottom={2}
                 padding={2}
               >
-                <Typography variant="h2">PROJECT</Typography>
+                <Typography variant="h2">PROJECT<br />USER</Typography>
               </Grid>
               <Grid item marginBottom={3} paddingX={2}>
-                <FormControl variant="standard" required>
+                <FormControl variant="standard" required fullWidth>
                   <InputLabel htmlFor="sign-in-email">Email</InputLabel>
                   <Input
                     id="sign-in-email"
                     fullWidth
                     label="Email"
                     placeholder="이메일"
+                    onChange={emailHandler}
                   />
                 </FormControl>
               </Grid>
-              <Grid item marginBottom={5} paddingX={2}>
+              <Grid item marginBottom={5} paddingX={2} fullWidth>
                 <FormControl variant="standard" required>
                   <InputLabel htmlFor="sign-in-password">Password</InputLabel>
                   <Input
@@ -76,6 +87,7 @@ function SignIn() {
                         </IconButton>
                       </InputAdornment>
                     }
+                    onChange={passwordHandler}
                   />
                 </FormControl>
               </Grid>
