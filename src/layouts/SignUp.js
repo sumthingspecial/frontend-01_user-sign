@@ -36,7 +36,7 @@ function SignUp() {
               >
                 <Typography variant="h2">MEMBER</Typography>
               </Grid>
-              <Grid item container marginBottom={1.5} paddingX={2} columnSpacing={2} alignItems="center">
+              <Grid item container marginBottom={1.5} paddingX={2} columnSpacing={2} alignItems="flex-end">
                 <Grid item>                  
                   <FormControl variant="standard" required>
                     <InputLabel htmlFor="sign-in-email">Email</InputLabel>
