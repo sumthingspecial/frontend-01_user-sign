@@ -37,7 +37,7 @@ function SignIn() {
     const target = e.target
     const [id, pw] = [target[0].value, target[1].value]
     console.log(id, pw)
-    axios.post("http://www.naver.com/", {id: id, pw: pw})
+    axios.post("http://43.201.22.155:8080/api/v1/auth/signin", {id: id, pw: pw})
   }
 
   return (

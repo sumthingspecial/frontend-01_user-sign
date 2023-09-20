@@ -1,5 +1,6 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
 import { Button, Card, Container, FormControl, Grid, IconButton, Input, InputAdornment, InputLabel, Typography } from "@mui/material"
+import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -39,6 +40,9 @@ function SignUp() {
   const signUpHandler = (e) => {
     e.preventDefault();
     console.log(e)
+    const reqData = {email: email, password: password, mobile: phone, name: name, birthday: "19910512"}
+    console.log(reqData)
+    axios.post("http://43.201.22.155:8080/api/v1/auth/signup", reqData)
   }
 
 
