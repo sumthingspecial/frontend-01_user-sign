@@ -11,6 +11,7 @@ import {
   InputLabel,
   Typography,
 } from "@mui/material";
+import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
 
@@ -33,7 +34,10 @@ function SignIn() {
 
   const signInHandler = (e) => {
     e.preventDefault();
-    console.log(e)
+    const target = e.target
+    const [id, pw] = [target[0].value, target[1].value]
+    console.log(id, pw)
+    axios.post("http://www.naver.com/", {id: id, pw: pw})
   }
 
   return (
@@ -57,7 +61,7 @@ function SignIn() {
                 <Typography variant="h2">PROJECT<br />USER</Typography>
               </Grid>
               <Grid item marginBottom={3} paddingX={2}>
-                <FormControl variant="standard" required fullWidth>
+                <FormControl variant="standard" required>
                   <InputLabel htmlFor="sign-in-email">Email</InputLabel>
                   <Input
                     id="sign-in-email"
@@ -68,7 +72,7 @@ function SignIn() {
                   />
                 </FormControl>
               </Grid>
-              <Grid item marginBottom={5} paddingX={2} fullWidth>
+              <Grid item marginBottom={5} paddingX={2}>
                 <FormControl variant="standard" required>
                   <InputLabel htmlFor="sign-in-password">Password</InputLabel>
                   <Input
