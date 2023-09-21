@@ -10,6 +10,7 @@ function SignUp() {
   const [password, setPassword] = useState("");
   const [isPasswordShown, setIsPasswordShown] = useState(false);
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const [isPasswordMatch, setIsPasswordMatch] = useState(false);
   const [name, setName] = useState("");
   const [phone, setPhone] = useState("");
 
@@ -27,6 +28,11 @@ function SignUp() {
 
   const passwordConfirmHandler = (e) => {
     setPasswordConfirm(e.target.value);
+    if (password === passwordConfirm) {
+      setIsPasswordMatch(true);
+    } else {
+      setIsPasswordMatch(false);
+    }
   };
 
   const nameHandler = (e) => {
