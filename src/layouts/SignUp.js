@@ -18,6 +18,14 @@ function SignUp() {
     setEmail(e.target.value);
   }
 
+  const checkEmailHandler = () => {
+    if (email) {
+      setIsEmailChecked(true);
+    } else {
+      alert("이메일을 입력해주세요.")
+    }
+  }
+
   const passwordHandler = (e) => {
     setPassword(e.target.value);
   }
@@ -79,12 +87,13 @@ function SignUp() {
                         fullWidth
                         label="Email"
                         placeholder="이메일"
+                        disabled={isEmailChecked}
                         onChange={emailHandler}
                       />
                     </FormControl>
                   </Grid>
                   <Grid item>
-                    <Button type="button" variant="contained">메일 확인</Button>
+                    <Button type="button" variant="contained" onClick={checkEmailHandler}>메일 확인</Button>
                   </Grid>
                 </Grid>
                 <Grid item>                  
