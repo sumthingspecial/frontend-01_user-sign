@@ -22,11 +22,11 @@ function SignIn() {
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
-  }
+  };
 
   const passwordHandler = (e) => {
     setPassword(e.target.value);
-  }
+  };
 
   const togglePasswordShow = () => {
     setIsPasswordShown(!isPasswordShown);
@@ -34,11 +34,13 @@ function SignIn() {
 
   const signInHandler = (e) => {
     e.preventDefault();
-    const target = e.target
-    const [id, pw] = [target[0].value, target[1].value]
-    console.log(id, pw)
-    axios.post("http://43.201.22.155:8080/api/v1/auth/signin", {id: id, pw: pw})
-  }
+    const target = e.target;
+    const [id, pw] = [target[0].value, target[1].value];
+    axios.post("http://43.201.22.155:8080/api/v1/auth/signin", {
+      id: id,
+      pw: pw,
+    });
+  };
 
   return (
     <Container>
@@ -58,7 +60,11 @@ function SignIn() {
                 marginBottom={2}
                 padding={2}
               >
-                <Typography variant="h2">PROJECT<br />USER</Typography>
+                <Typography variant="h2">
+                  PROJECT
+                  <br />
+                  USER
+                </Typography>
               </Grid>
               <Grid item marginBottom={3} paddingX={2}>
                 <FormControl variant="standard" required>
@@ -95,17 +101,18 @@ function SignIn() {
                   />
                 </FormControl>
               </Grid>
-              <Grid
-                item
-                container
-                justifyContent="center"
-                paddingX={2}
-              >
+              <Grid item container justifyContent="center" paddingX={2}>
                 <Button variant="contained" type="submit" fullWidth>
                   로그인
                 </Button>
               </Grid>
-              <Grid item container justifyContent="space-between" paddingX={2} paddingTop={0.5}>
+              <Grid
+                item
+                container
+                justifyContent="space-between"
+                paddingX={2}
+                paddingTop={0.5}
+              >
                 <Link to="/sign-up">
                   <Button type="button">회원가입</Button>
                 </Link>
