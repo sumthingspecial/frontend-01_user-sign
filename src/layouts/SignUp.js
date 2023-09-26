@@ -1,5 +1,16 @@
 import { Visibility, VisibilityOff } from "@mui/icons-material";
-import { Button, Card, Container, FormControl, Grid, IconButton, Input, InputAdornment, InputLabel, Typography } from "@mui/material"
+import {
+  Button,
+  Card,
+  Container,
+  FormControl,
+  Grid,
+  IconButton,
+  Input,
+  InputAdornment,
+  InputLabel,
+  Typography,
+} from "@mui/material";
 import axios from "axios";
 import { useState } from "react";
 import { Link } from "react-router-dom";
@@ -16,19 +27,19 @@ function SignUp() {
 
   const emailHandler = (e) => {
     setEmail(e.target.value);
-  }
+  };
 
   const checkEmailHandler = () => {
     if (email) {
       setIsEmailChecked(true);
     } else {
-      alert("이메일을 입력해주세요.")
+      alert("이메일을 입력해주세요.");
     }
-  }
+  };
 
   const passwordHandler = (e) => {
     setPassword(e.target.value);
-  }
+  };
 
   const togglePasswordShow = () => {
     setIsPasswordShown(!isPasswordShown);
@@ -45,20 +56,25 @@ function SignUp() {
 
   const nameHandler = (e) => {
     setName(e.target.value);
-  }
+  };
 
   const phoneHandler = (e) => {
     setPhone(e.target.value);
-  }
+  };
 
   const signUpHandler = (e) => {
     e.preventDefault();
-    console.log(e)
-    const reqData = {email: email, password: password, mobile: phone, name: name, birthday: "19910512"}
-    console.log(reqData)
-    axios.post("http://43.201.22.155:8080/api/v1/auth/signup", reqData)
-  }
-
+    console.log(e);
+    const reqData = {
+      email: email,
+      password: password,
+      mobile: phone,
+      name: name,
+      birthday: "19910512",
+    };
+    console.log(reqData);
+    axios.post("http://43.201.22.155:8080/api/v1/auth/signup", reqData);
+  };
 
   return (
     <Container>
@@ -71,15 +87,24 @@ function SignUp() {
         <Card>
           <form onSubmit={signUpHandler}>
             <Grid container padding={5} flexDirection="column">
+              <Grid item marginBottom={4}>
+                <Typography variant="h3">
+                  BE
+                  <br />
+                  OUR
+                  <br />
+                  MEMBER
+                </Typography>
+              </Grid>
               <Grid
                 item
-                marginBottom={4}
+                container
+                marginBottom={5}
+                flexDirection="column"
+                rowSpacing={1.5}
               >
-                <Typography variant="h3">BE<br />OUR<br />MEMBER</Typography>
-              </Grid>
-              <Grid item container marginBottom={5} flexDirection="column" rowSpacing={1.5}>
                 <Grid item container columnSpacing={2} alignItems="flex-end">
-                  <Grid item>                  
+                  <Grid item>
                     <FormControl variant="standard" required>
                       <InputLabel htmlFor="sign-up-email">Email</InputLabel>
                       <Input
@@ -93,10 +118,16 @@ function SignUp() {
                     </FormControl>
                   </Grid>
                   <Grid item>
-                    <Button type="button" variant="contained" onClick={checkEmailHandler}>메일 확인</Button>
+                    <Button
+                      type="button"
+                      variant="contained"
+                      onClick={checkEmailHandler}
+                    >
+                      메일 확인
+                    </Button>
                   </Grid>
                 </Grid>
-                <Grid item>                  
+                <Grid item>
                   <FormControl variant="standard" required fullWidth>
                     <InputLabel htmlFor="sign-up-password">Password</InputLabel>
                     <Input
@@ -111,7 +142,11 @@ function SignUp() {
                             aria-label="toggle password visibility"
                             onClick={togglePasswordShow}
                           >
-                            {isPasswordShown ? <VisibilityOff /> : <Visibility />}
+                            {isPasswordShown ? (
+                              <VisibilityOff />
+                            ) : (
+                              <Visibility />
+                            )}
                           </IconButton>
                         </InputAdornment>
                       }
@@ -120,8 +155,10 @@ function SignUp() {
                   </FormControl>
                 </Grid>
                 <Grid item>
-                  <FormControl variant="standard" required fullWidth>                  
-                    <InputLabel htmlFor="sign-up-password-confirm">Password Confirm</InputLabel>
+                  <FormControl variant="standard" required fullWidth>
+                    <InputLabel htmlFor="sign-up-password-confirm">
+                      Password Confirm
+                    </InputLabel>
                     <Input
                       id="sign-up-password-confirm"
                       fullWidth
@@ -133,7 +170,7 @@ function SignUp() {
                   </FormControl>
                 </Grid>
                 <Grid item>
-                  <FormControl variant="standard" required fullWidth>                  
+                  <FormControl variant="standard" required fullWidth>
                     <InputLabel htmlFor="sign-up-name">Name</InputLabel>
                     <Input
                       id="sign-up-name"
@@ -145,7 +182,7 @@ function SignUp() {
                   </FormControl>
                 </Grid>
                 <Grid item>
-                  <FormControl variant="standard" required fullWidth>                  
+                  <FormControl variant="standard" required fullWidth>
                     <InputLabel htmlFor="sign-up-phone">Phone</InputLabel>
                     <Input
                       id="sign-up-phone"
@@ -157,17 +194,18 @@ function SignUp() {
                   </FormControl>
                 </Grid>
               </Grid>
+              <Grid item container justifyContent="center" paddingX={2}>
+                <Button variant="contained" type="submit" fullWidth>
+                  회원가입
+                </Button>
+              </Grid>
               <Grid
                 item
                 container
                 justifyContent="center"
                 paddingX={2}
+                paddingTop={0.5}
               >
-                <Button variant="contained" type="submit" fullWidth>
-                  회원가입
-                </Button>
-              </Grid>
-              <Grid item container justifyContent="center" paddingX={2} paddingTop={0.5}>
                 <Link to="/sign-in">
                   <Button type="button">로그인</Button>
                 </Link>
@@ -177,7 +215,7 @@ function SignUp() {
         </Card>
       </Grid>
     </Container>
-  )
+  );
 }
 
-export default SignUp
+export default SignUp;

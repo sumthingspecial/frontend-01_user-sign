@@ -1,11 +1,7 @@
 const { Grid } = require("@mui/material");
 
-
 function FindPassword() {
-
-  return (
-    <Grid>find password</Grid>
-  )
+  return <Grid>find password</Grid>;
 }
 
-export default FindPassword
+export default FindPassword;
