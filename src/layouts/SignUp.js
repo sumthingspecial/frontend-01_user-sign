@@ -47,11 +47,6 @@ function SignUp() {
 
   const passwordConfirmHandler = (e) => {
     setPasswordConfirm(e.target.value);
-    if (password === passwordConfirm) {
-      setIsPasswordMatch(true);
-    } else {
-      setIsPasswordMatch(false);
-    }
   };
 
   const nameHandler = (e) => {
@@ -64,7 +59,12 @@ function SignUp() {
 
   const signUpHandler = (e) => {
     e.preventDefault();
-    console.log(e);
+
+    if (password !== passwordConfirm) {
+      alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
+      return;
+    }
+
     const reqData = {
       email: email,
       password: password,
