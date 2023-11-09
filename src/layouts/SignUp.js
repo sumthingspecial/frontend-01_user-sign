@@ -31,7 +31,12 @@ function SignUp() {
 
   const checkEmailHandler = () => {
     if (email) {
-      setIsEmailChecked(true);
+      const emailReg = new RegExp("[a-z0-9]+@[a-z]+.[a-z]{2,3}");
+      if (emailReg.test(email)) {
+        setIsEmailChecked(true);
+      } else {
+        alert("올바른 형식의 이메일을 입력해주세요.");
+      }
     } else {
       alert("이메일을 입력해주세요.");
     }
@@ -60,9 +65,25 @@ function SignUp() {
   const signUpHandler = (e) => {
     e.preventDefault();
 
+    if (password.length < 8) {
+      alert("비밀번호는 8자 이상 입력해주세요");
+      return;
+    }
+
     if (password !== passwordConfirm) {
       alert("비밀번호와 비밀번호 확인이 일치하지 않습니다.");
       return;
+    }
+
+    // const pwdReg = "^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$"; // 최소 8자, 하나 이상의 문자와 하나 이상의 숫자
+    // if (!pwdReg.test(pwdReg)) {
+    //   alert("비밀번호에 하나 이상의 문자와 하나 이상의 숫자를 포함해주세요.");
+    //   return;
+    // }
+
+    const phoneNoDash = phone.replace("-", "");
+    if (phoneNoDash[0] !== "0") {
+      alert("올바른 형식의 휴대폰 번호를 입력해주세요.");
     }
 
     const reqData = {
@@ -73,7 +94,7 @@ function SignUp() {
       birthday: "19910512",
     };
     console.log(reqData);
-    axios.post("http://43.201.22.155:8080/api/v1/auth/signup", reqData);
+    axios.post("http://localhost:8080/api/v1/auth/signup", reqData);
   };
 
   return (
