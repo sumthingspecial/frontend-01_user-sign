@@ -75,12 +75,6 @@ function SignUp() {
       return;
     }
 
-    // const pwdReg = "^(?=.*[A-Za-z])(?=.*d)[A-Za-zd]{8,}$"; // 최소 8자, 하나 이상의 문자와 하나 이상의 숫자
-    // if (!pwdReg.test(pwdReg)) {
-    //   alert("비밀번호에 하나 이상의 문자와 하나 이상의 숫자를 포함해주세요.");
-    //   return;
-    // }
-
     const phoneNoDash = phone.replace("-", "");
     if (phoneNoDash[0] !== "0") {
       alert("올바른 형식의 휴대폰 번호를 입력해주세요.");
