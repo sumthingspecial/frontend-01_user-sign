@@ -88,7 +88,7 @@ function SignUp() {
       birthday: "19910512",
     };
     console.log(reqData);
-    axios.post("http://localhost:8080/api/v1/auth/signup", reqData);
+    axios.post("http://49.50.160.190:8080/v1/auth/signup", reqData);
   };
 
   return (

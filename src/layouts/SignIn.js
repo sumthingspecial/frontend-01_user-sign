@@ -36,9 +36,9 @@ function SignIn() {
     e.preventDefault();
     const target = e.target;
     const [id, pw] = [target[0].value, target[1].value];
-    axios.post("http://43.201.22.155:8080/api/v1/auth/signin", {
-      id: id,
-      pw: pw,
+    axios.post("http://49.50.160.190:8080/v1/auth/signin", {
+      email: id,
+      password: pw,
     });
   };
 
